@@ -14,7 +14,6 @@ echo Welcome To Bash Scripting
 # Single Quotes In Bash are quite dangerous.
 echo "Hello World"
 
-
 echo Line1
 echo Line2
 echo Line3 

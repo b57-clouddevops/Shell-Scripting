@@ -15,4 +15,4 @@ echo "Script Name is : $0"
 
 
 
-$0 : Prints the name of the script you're running
+# $0 : Prints the name of the script you're running

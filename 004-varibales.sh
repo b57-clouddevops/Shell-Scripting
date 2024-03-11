@@ -14,4 +14,6 @@ b=def
 
 # How can we print a variable ?  $var
 
-echo a
+# $ is a special variableand this helps you in printing the value of the variable 
+echo $a
+echo "The value of the variable b is $b"

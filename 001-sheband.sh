@@ -10,4 +10,11 @@
 
 echo Welcome To Bash Scripting
 
+# Whenever you have any special characters that you're printing, ensure you place them in DOUBLE QUOTES, not SINGLE QUOTES.
+# Single Quotes In Bash are quite dangerous.
 echo "Hello World"
+
+
+echo Line1
+echo Line2
+echo Line3 

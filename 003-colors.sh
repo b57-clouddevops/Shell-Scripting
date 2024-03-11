@@ -15,7 +15,10 @@
 # echo -e "\e[COLORCODEm I am printing a color \e[0m"
 
 echo -e "\e[32m I am printing GREEN COLOR \e[0m"
-
+echo -e "\e[31m I am printing RED COLOR \e[0m"
+echo -e "\e[33m I am printing Yellow COLOR \e[0m"
+echo -e "\e[34m I am printing Blue COLOR \e[0m"
+echo -e "\e[35m I am printing Magenta COLOR \e[0m"
 
 # () : Paranthesis
 # [] : Square Bracker

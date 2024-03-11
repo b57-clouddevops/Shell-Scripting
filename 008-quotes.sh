@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ""   : Double Quotes 
-# ''   : Single Quotes   : Single Quotes When used special variables will make special variable to lose it's power.
+# ''   : Single Quotes   : # Single Quotes Always Eliminates The Power Of The Special Variable 
 
 a=100 
 echo $?

@@ -23,3 +23,11 @@ echo -e "\e[35m I am printing Magenta COLOR \e[0m"
 # () : Paranthesis
 # [] : Square Bracker
 # {} : Flower Bracker
+
+#### How can we add a baccGround color ? Here is the syntax 
+
+# echo -e "\e[43;31m I am printing Text with a backGround Color \e[0m"
+
+echo -e "\n\n"
+
+echo -e "\e[43;31m I am printing Text with a backGround Color \e[0m"

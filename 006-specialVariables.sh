@@ -20,3 +20,9 @@ echo -e "Name of the project is : \e[33m $PROJECT \e[0m"
 ### bash scriptName.sh    arg1   arg2   arg3   arg4 . . . . . . arg9
 ### bash scriptName.sh  firstArg   secondArg  thirdArd 
 ### bash abc.sh  10   20   30 
+# bash arg1  arg2  arg3 arg4  arg5  arg6 arg7  arg8  arg9  arg10 
+#        1     2     3    4    5     6    7      8    9      10
+# ( You supply up to 9 arguments)
+
+
+echo $0   # prints the scriptName

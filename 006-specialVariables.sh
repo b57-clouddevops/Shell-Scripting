@@ -7,12 +7,14 @@
 # Can you create special variables on Bash ? 100% No , you can just use the special variables that are offered.
 
 a=3000 
-
+TEAM=$1
 echo "Value of a is $a" 
 echo "Script Name is : $0"
 
-
-
-
-
 # $0 : Prints the name of the script you're running
+
+echo "Name of the team running the script is :  $TEAM"
+
+### bash scriptName.sh    arg1   arg2   arg3   arg4 . . . . . . arg9
+### bash scriptName.sh  firstArg   secondArg  thirdArd 
+### bash abc.sh  10   20   30 

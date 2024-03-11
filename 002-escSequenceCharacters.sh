@@ -12,3 +12,7 @@ echo -e "Line3\nLine4"
 echo -e "Line5\tLine6"
 
 echo -e "Line7\n\tLine8"
+
+# Whenever you're using special characters , always enclose them in DOUBLE QUOTES
+# " "  : Double Quotes 
+# ' '  : Single Quotes

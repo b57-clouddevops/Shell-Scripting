@@ -9,3 +9,5 @@
 # Comments are just for the purpose of humans to make to more verbose.
 
 echo Welcome To Bash Scripting
+
+echo "Hello World"

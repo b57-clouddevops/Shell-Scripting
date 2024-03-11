@@ -15,7 +15,7 @@ echo "Script Name is : $0"
 # $0 : Prints the name of the script you're running
 
 echo -e "Name of the team running the script is : \e[33m $TEAM \e[0m"
-echo "Name of the project is : \e[33m $PROJECT \e[0m"
+echo -e "Name of the project is : \e[33m $PROJECT \e[0m"
 
 ### bash scriptName.sh    arg1   arg2   arg3   arg4 . . . . . . arg9
 ### bash scriptName.sh  firstArg   secondArg  thirdArd 

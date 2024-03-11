@@ -18,7 +18,7 @@ CUSTDATA="shipping"
 # $ is a special variableand this helps you in printing the value of the variable 
 echo $a
 echo "The value of the variable b is $b"
-echo -e "The value of the variable a is \e[31m ${a} \e[0m"
+echo -e "The value of the variable a is \e[32m ${a} \e[0m"
 
 # Since in bash and shell, there are lot of versions, both of the syntaxes are valid, in case if anyone doesn't work, prefer to use the other one.
 # echo $a 

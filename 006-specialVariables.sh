@@ -8,12 +8,14 @@
 
 a=3000 
 TEAM=$1
+PROJECT=$2
 echo "Value of a is $a" 
 echo "Script Name is : $0"
 
 # $0 : Prints the name of the script you're running
 
 echo "Name of the team running the script is :  $TEAM"
+echo "Name of the project is : $PROJECT"
 
 ### bash scriptName.sh    arg1   arg2   arg3   arg4 . . . . . . arg9
 ### bash scriptName.sh  firstArg   secondArg  thirdArd 

@@ -26,3 +26,4 @@ echo -e "Name of the project is : \e[33m $PROJECT \e[0m"
 
 
 echo $0   # prints the scriptName
+echo $#   # Prints the arguments used in the script

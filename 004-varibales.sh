@@ -17,3 +17,8 @@ b=def
 # $ is a special variableand this helps you in printing the value of the variable 
 echo $a
 echo "The value of the variable b is $b"
+echo "The value of the variable a is ${b}"
+
+# Since in bash and shell, there are lot of versions, both of the syntaxes are valid, in case if anyone doesn't work, prefer to use the other one.
+# echo $a 
+# echo ${a}

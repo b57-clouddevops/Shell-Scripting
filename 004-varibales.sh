@@ -22,3 +22,7 @@ echo "The value of the variable a is ${b}"
 # Since in bash and shell, there are lot of versions, both of the syntaxes are valid, in case if anyone doesn't work, prefer to use the other one.
 # echo $a 
 # echo ${a}
+
+# Printing a variable, wher ethe value of it is not declared , what will happen ?
+
+echo "The value of the variable d is ${d}"

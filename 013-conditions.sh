@@ -10,6 +10,7 @@
 #     opt2) commands-y ;; 
 # esac
 
+ACTION=$1
 
 case $ACTION in 
     start)

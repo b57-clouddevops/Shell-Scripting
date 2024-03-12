@@ -22,4 +22,7 @@ case $ACTION in
     restart)
         echo "Restarting Dispatch Service" 
         ;;
+    *)
+        echo "Valid options are: start  stop  restart   only"
+        echo "Usage: bash conditions.sh  start"
 esac 

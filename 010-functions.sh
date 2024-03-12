@@ -31,7 +31,7 @@ sample() {
 sample
 
 stat() {
-    echo "Number of opened sessions $(who|Wc -l)"
+    echo "Number of opened sessions $(who|wc -l)"
     echo "Todays date is $(date +%F)"
     echo "Load Average in last 1 minute : $(uptime | awk -F : '{print $NF}' | awk -F ',' '{print $1}')" 
 }

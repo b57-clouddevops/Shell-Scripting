@@ -17,5 +17,5 @@
 # done 
 
 for x in 10 20 30 40 50 ; do  
-    echo -e "Vales are $x"
+    echo -e "Vales are $x \n\t"
 done 

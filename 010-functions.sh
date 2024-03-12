@@ -29,3 +29,15 @@ sample() {
 }
 
 sample
+
+stat() {
+    echo "Number of opened sessions $(who|Wc -l)"
+    echo "Todays date is $(date +%F)"
+    echo "Load Average in last 1 minute : $(uptime | awk -F : '{print $NF}' | awk -F ',' '{print $1}')" 
+}
+
+stat
+sleep 3
+stat 
+sleep 3
+stat 

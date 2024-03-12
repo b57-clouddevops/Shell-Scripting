@@ -30,3 +30,5 @@ case $ACTION in
         echo -e "\e[33m Usage: \e[0m \n\tbash conditions.sh  start"
         exit 3
 esac 
+
+

@@ -14,15 +14,15 @@ ACTION=$1
 
 case $ACTION in 
     start)
-        echo "Starting Dispatch Service" 
+        echo -e "\e[32m Starting Dispatch Service \e[0m" 
         ;;
     stop)
-        echo "Stopping Dispatch Service" 
+        echo -e "\e[31m Stopping Dispatch Service \e[0m" 
         ;;
     restart)
-        echo "Restarting Dispatch Service" 
+        echo -e "\e[33m Restarting Dispatch Service \e[0m" 
         ;;
     *)
-        echo "Valid options are: start  stop  restart   only"
-        echo "Usage: bash conditions.sh  start"
+        echo -e "\e[35m Valid options are: start  stop  restart   only \e[0m"
+        echo -e "\e[33m Usage: \e[0m \n\tbash conditions.sh  start"
 esac 

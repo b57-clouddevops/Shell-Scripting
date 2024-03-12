@@ -19,3 +19,13 @@ f               # calling a function
 echo "Today we are learning bash"
 echo "Today is day 2 of bash"
 f 
+
+# Can we call a function from another function ? YES
+
+sample() {
+    echo "Hai from sample function"
+    echo "I am calling function f"
+    f
+}
+
+sample

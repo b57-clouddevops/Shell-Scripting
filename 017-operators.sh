@@ -19,7 +19,6 @@ Operators on numbers:
 
 Operators on Strings:
 
-
     = , == , !=
 
     [ abc = abc ]

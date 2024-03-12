@@ -7,5 +7,7 @@
 echo Printing Multi Line Comment
 <<COMMENT
 a=10
+b=20
 echo value of is $a
 COMMENT
+echo value of b is $b 

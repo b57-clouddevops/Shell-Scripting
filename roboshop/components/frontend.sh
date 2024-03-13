@@ -19,7 +19,7 @@ stat() {
     fi 
 }
 
-echo -e "\e[32m **************** ______ $COMPONENT Configuration Is Started ______  **************** \e[0m"
+echo -e "\e[35m **************** ______ $COMPONENT Configuration Is Started ______  **************** \e[0m"
 echo -n "Intalling Nginx Web Server :"
 dnf install nginx -y        &>>  $LOGFILE
 stat $?
@@ -52,4 +52,4 @@ echo -n "Retarting the Web Server: "
 systemctl restart nginx       &>>  $LOGFILE
 stat $?
 
-echo -e "\e[32m **************** ______ $COMPONENT Configuration Is Completed ______  **************** \e[0m"
+echo -e "\e[35m **************** ______ $COMPONENT Configuration Is Completed ______  **************** \e[0m"

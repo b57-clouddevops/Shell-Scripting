@@ -53,8 +53,8 @@ stat $?
 
 echo -n "Injecting the schema :"
 cd /tmp/mongodb-main   
-mongo < catalogue.js
-mongo < users.js
+mongo < catalogue.js    &>>  $LOGFILE
+mongo < users.js        &>>  $LOGFILE
 stat $? 
 
 echo -e "\e[35m ****** ______ $COMPONENT Configuration Is Completed ****** ______ \e[0m"

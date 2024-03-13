@@ -10,6 +10,7 @@ fi
 COMPONENT="mongodb"
 LOGFILE="/tmp/$1.log"
 MONGO_REPO="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mongo.repo"
+SCHEMA_URL="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 
 stat() {
     if [ $1 -eq 0 ]; then 
@@ -18,6 +19,8 @@ stat() {
         echo "\e[31m Failure \e[0m"
     fi 
 }
+
+echo -e "\e[35m ****** ______ $COMPONENT Configuration Is Started ****** ______ \e[0m"
 
 echo -n "Configuring $COMPONENT repo"
 curl -s -o /etc/yum.repos.d/mongodb.repo $MONGO_REPO
@@ -38,3 +41,19 @@ stat $?
 echo -n "Starting $COMPONENT Service :"
 systemctl start mongod     &>>  $LOGFILE
 stat $?
+
+echo -n "Downloading $COMPONENT Schema File : "
+curl -s -L -o /tmp/mongodb.zip $SCHEMA_URL  &>>  $LOGFILE
+stat $?
+
+echo -n "Extracting $COMPONENT Schema :"
+unzip  /tmp/${COMPONENT}.zip   &>>  $LOGFILE
+stat $? 
+
+echo -n "Injecting the schema :"
+cd /tmp/mongodb-main   
+mongo < catalogue.js
+mongo < users.js
+stat $? 
+
+echo -e "\e[35m ****** ______ $COMPONENT Configuration Is Completed ****** ______ \e[0m"

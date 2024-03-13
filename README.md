@@ -13,3 +13,8 @@ Before you make a first push, ensure you generate the token,
 
 
 ### Whenever you design anything, makesure that piece of automation should work for other environments as well ( prod, non-prod, qa, dev )
+
+## Best Practices To Be Followed for a better automation :
+
+    1) Always consider something as working if it works multiple times.
+    2) Try to avoid the repetivie code and utilize functions as much as possible to avoid the code duplication.

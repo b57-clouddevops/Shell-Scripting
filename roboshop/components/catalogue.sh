@@ -16,7 +16,7 @@ stat() {
     if [ $1 -eq 0 ]; then 
         echo -e "\e[32m Success \e[0m"
     else 
-        echo "\e[31m Failure \e[0m"
+        echo -e "\e[31m Failure \e[0m"
     fi 
 }
 
@@ -25,7 +25,7 @@ echo -n "Disabling  Default NodeJS Version :"
 dnf module disable nodejs -y      &>>  $LOGFILE
 stat $? 
 
-echo -n "Disabling NodeJS Version 18 :"
+echo -n "Enabling NodeJS Version 18 :"
 dnf module enable nodejs:18 -y    &>>  $LOGFILE
 stat $?
 

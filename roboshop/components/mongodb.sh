@@ -19,9 +19,11 @@ stat() {
     fi 
 }
 
+echo "Configuring $COMPONENT repo"
 curl -s -o /etc/yum.repos.d/mongodb.repo $MONGO_REPO
 stat $? 
 
+echo "Installing $COMPONENT :"
 dnf install -y mongodb-org  &>>  $LOGFILE
 stat $? 
 

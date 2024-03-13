@@ -8,7 +8,8 @@ if [ $ID -ne 0 ] ; then
     exit 1
 fi 
 
-LOGFILE="/tmp/frontend.log"
+COMPONENT="frontend"
+LOGFILE="/tmp/$1.log"
 
 stat() {
     if [ $1 -eq 0 ]; then 
@@ -28,4 +29,24 @@ stat $?
 
 echo -n "Starting the Web Server: "
 systemctl start nginx       &>>  $LOGFILE
+stat $?
+
+echo -n "Downloading the $COMPONENT Component: "
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+stat $? 
+
+echo -n "Performing $COMPONENT Cleanup :"
+cd /usr/share/nginx/html 
+rm -rf * &>>  $LOGFILE
+stat $? 
+
+echo -n "Extracting $COMPONENT :"
+unzip /tmp/frontend.zip
+stat $? 
+
+echo -n "Configuring $COMPONENT :"
+mv ${COMPONENT}-main/* .
+mv static/* .
+rm -rf ${COMPONENT}-main README.md
+mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?

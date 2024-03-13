@@ -27,10 +27,6 @@ echo -n "Enabling the service :"
 systemctl enable nginx      &>>  $LOGFILE
 stat $?
 
-echo -n "Starting the Web Server: "
-systemctl start nginx       &>>  $LOGFILE
-stat $?
-
 echo -n "Downloading the $COMPONENT Component: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $? 
@@ -49,4 +45,8 @@ mv ${COMPONENT}-main/* .   &>>  $LOGFILE
 mv static/* .        &>>  $LOGFILE
 rm -rf ${COMPONENT}-main README.md    &>>  $LOGFILE  
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
+stat $?
+
+echo -n "Retarting the Web Server: "
+systemctl restart nginx       &>>  $LOGFILE
 stat $?

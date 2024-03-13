@@ -18,3 +18,10 @@ Before you make a first push, ensure you generate the token,
 
     1) Always consider something as working if it works multiple times.
     2) Try to avoid the repetivie code and utilize functions as much as possible to avoid the code duplication.
+
+
+
+### DRY Code vs WET Code ?
+
+    DRY : Don't Repeat Yourself (DRY) is a software development principle, the main aim of which is to reduce repetition of code
+    WET : Write Everything Twice

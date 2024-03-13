@@ -19,11 +19,11 @@ stat() {
     fi 
 }
 
-echo "Configuring $COMPONENT repo"
+echo -n "Configuring $COMPONENT repo"
 curl -s -o /etc/yum.repos.d/mongodb.repo $MONGO_REPO
 stat $? 
 
-echo "Installing $COMPONENT :"
+echo -n "Installing $COMPONENT :"
 dnf install -y mongodb-org  &>>  $LOGFILE
 stat $? 
 
@@ -31,6 +31,9 @@ echo -n "Enabling $COMPONENT Service :"
 systemctl enable mongod     &>>  $LOGFILE
 stat $?
 
+echo -n "Enabling $COMPONENT Visibility :"
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+
 echo -n "Starting $COMPONENT Service :"
-systemctl start mongod     &>>  $LOGFILE
+systemctl restart mongod     &>>  $LOGFILE
 stat $?

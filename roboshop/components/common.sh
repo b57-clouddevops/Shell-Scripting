@@ -29,6 +29,21 @@ CREATE_USER() {
     fi 
 }
 
+DOWNLOAD_AND_EXTRACT() {
+    echo -n "Downloading the $COMPONENT Component: "
+    curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+    stat $? 
+
+    echo -n "Performing $COMPONENT Cleanup :"
+    rm -rf ${APPUSER_DIR}  &>>  $LOGFILE
+    stat $? 
+
+    echo -n "Extracting $COMPONENT :"
+    cd /home/roboshop
+    unzip -o /tmp/${COMPONENT}.zip  &>>  $LOGFILE
+    stat $? 
+}
+
 # Declaring a Nodejs Function : 
 NODEJS() {
     echo -n "Disabling  Default NodeJS Version :"
@@ -44,4 +59,6 @@ NODEJS() {
     stat $?    
 
     CREATE_USER         # Calling function from another function
+
+    DOWNLOAD_AND_EXTRACT
 }

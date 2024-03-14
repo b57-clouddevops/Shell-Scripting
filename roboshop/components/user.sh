@@ -11,5 +11,4 @@ echo -e "\e[35m **************** ______ $COMPONENT Configuration Is Started ____
 
 # CALLING NODEJS FUNCTION
 NODEJS 
-
 echo -e "\e[35m ****** ______ $COMPONENT Configuration Is Completed ****** ______ \e[0m"

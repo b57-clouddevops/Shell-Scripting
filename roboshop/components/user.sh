@@ -42,7 +42,6 @@ else
     echo -e "\e[35m SKIPPING \e[0m"
 fi 
 
-
 echo -n "Downloading the $COMPONENT Component: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $? 
@@ -53,7 +52,7 @@ stat $?
 
 echo -n "Extracting $COMPONENT :"
 cd /home/roboshop
-unzip -o /tmp/catalogue.zip  &>>  $LOGFILE
+unzip -o /tmp/${COMPONENT}.zip  &>>  $LOGFILE
 stat $? 
 
 echo -n "Configuring Permissions :"

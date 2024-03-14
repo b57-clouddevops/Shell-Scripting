@@ -47,7 +47,11 @@ echo -n "Downloading the $COMPONENT Component: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $? 
 
-echo -n "Extracting $APPUSER :"
+echo -n "Performing $COMPONENT Cleanup :"
+rm -rf ${APPUSER_DIR}  &>>  $LOGFILE
+stat $? 
+
+echo -n "Extracting $COMPONENT :"
 cd /home/roboshop
 unzip -o /tmp/catalogue.zip  &>>  $LOGFILE
 stat $? 

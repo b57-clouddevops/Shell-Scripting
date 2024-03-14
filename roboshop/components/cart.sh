@@ -5,29 +5,10 @@ LOGFILE="/tmp/$COMPONENT.log"
 APPUSER="roboshop"
 APPUSER_DIR="/home/roboshop/${COMPONENT}"
 
-source components/common.sh         # source will keep all the functions local to the current script that declared in other file.
+source components/common.sh                  # source will keep all the functions local to the current script that declared in other file.
 
-echo -e "\e[35m ****** ______ $COMPONENT Configuration Is Started ______  ******* \e[0m"
-echo -n "Disabling  Default NodeJS Version :"
-dnf module disable nodejs -y      &>>  $LOGFILE
-stat $? 
-
-echo -n "Enabling NodeJS Version 18 :"
-dnf module enable nodejs:18 -y    &>>  $LOGFILE
-stat $?
-
-echo -n "Installing NodeJS :"
-dnf install nodejs -y             &>>  $LOGFILE
-stat $? 
-
-echo -n "Creating $APPUSER user account: "
-id $APPUSER     &>>  $LOGFILE
-if [ $? -ne 0 ]; then 
-    useradd $APPUSER
-    stat $? 
-else 
-    echo -e "\e[35m SKIPPING \e[0m"
-fi 
+# CALLING NODEJS FUNCTION
+NODEJS 
 
 echo -n "Downloading the $COMPONENT Component: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"

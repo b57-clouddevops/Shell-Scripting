@@ -36,3 +36,8 @@ Before you make a first push, ensure you generate the token,
 # What we have achieved ?
     1) We have parameterized the code, so that with very minimal changes we were able to re-use the code
     2) But is our code still DRY ?
+
+
+
+We have   NodeJS, Python , Java, AngularJS based components . . .
+           (3)     (1)      (1)    (1)

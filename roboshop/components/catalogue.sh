@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Check whether you're running this script with sudo or a root user or not.If not, exit the script
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then 
@@ -41,3 +40,14 @@ if [ $? -ne 0 ]; then
 else 
     echo -e "\e[35m SKIPPING \e[0m"
 fi 
+
+
+echo -n "Downloading the $COMPONENT Component: "
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+stat $? 
+
+echo "Extracting $APPUSER :"
+cd /home/roboshop
+unzip -o /tmp/catalogue.zip  &>>  $LOGFILE
+stat $? 
+

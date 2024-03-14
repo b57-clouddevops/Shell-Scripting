@@ -12,24 +12,4 @@ echo -e "\e[35m **************** ______ $COMPONENT Configuration Is Started ____
 # CALLING NODEJS FUNCTION
 NODEJS 
 
-echo -n "Configuring Permissions :"
-mv /home/roboshop/${COMPONENT}-main ${APPUSER_DIR} &>>  $LOGFILE
-chown -R ${APPUSER}:${APPUSER} ${APPUSER_DIR}      &>>  $LOGFILE
-stat $? 
-
-echo -n "Generating $COMPONENT Artifacts :"
-cd ${APPUSER_DIR}
-npm install  &>>  $LOGFILE
-stat $? 
-
-echo -n "Configuring $COMPONENT Service: "
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' ${APPUSER_DIR}/systemd.service
-mv ${APPUSER_DIR}/systemd.service   /etc/systemd/system/${COMPONENT}.service
-stat $? 
-
-echo -n "Starting $COMPONENT Service :"
-systemctl enable $COMPONENT     &>>  $LOGFILE
-systemctl restart $COMPONENT     &>>  $LOGFILE
-stat $? 
-
 echo -e "\e[35m ****** ______ $COMPONENT Configuration Is Completed ****** ______ \e[0m"

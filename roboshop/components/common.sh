@@ -3,6 +3,10 @@
 # This is a file to host all the COMMON PATTERN's or the common functions.
 # This can be imported in any of the scripts with the help of source
 
+LOGFILE="/tmp/$COMPONENT.log"
+APPUSER="roboshop"
+APPUSER_DIR="/home/roboshop/${COMPONENT}"
+
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then 
     echo -e "\e[31m This script is expected to run with sudo or as a root user \e[0m   \n\t Ex:  bash scriptName compName"

@@ -25,3 +25,10 @@ Before you make a first push, ensure you generate the token,
 
     DRY : Don't Repeat Yourself (DRY) is a software development principle, the main aim of which is to reduce repetition of code
     WET : Write Everything Twice
+
+
+### Point To Be Notes When Dealing Internal DNS Record 
+
+    1) When you create any Private DNS Record, don't prefer to delete anytime.
+    2) Just update the IP
+    3) If you delete the Private DNS Record and try to create again, sometimes it would take up to 24 hours.

@@ -32,3 +32,7 @@ Before you make a first push, ensure you generate the token,
     1) When you create any Private DNS Record, don't prefer to delete anytime.
     2) Just update the IP
     3) If you delete the Private DNS Record and try to create again, sometimes it would take up to 24 hours.
+
+# What we have achieved ?
+    1) We have parameterized the code, so that with very minimal changes we were able to re-use the code
+    2) But is our code still DRY ?

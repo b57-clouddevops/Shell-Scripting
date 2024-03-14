@@ -48,6 +48,10 @@ rm -rf ${COMPONENT}-main README.md    &>>  $LOGFILE
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
+echo -n "Updating Reverse Proxy File: "
+sed -e  "/catalogue/s/localhost/mongodb.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
+stat $?
+
 echo -n "Retarting the Web Server: "
 systemctl restart nginx       &>>  $LOGFILE
 stat $?

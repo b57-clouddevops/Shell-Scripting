@@ -50,8 +50,8 @@ stat $?
 echo -n "Updating Reverse Proxy File: "
     for i in catalogue user ; do 
         sed -i -e "/$i/s/localhost/$i.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
-        stat $?
     done
+stat $?
 
 echo -n "Retarting the Web Server: "
 systemctl restart nginx       &>>  $LOGFILE

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Check whether you're running this script with sudo or a root user or not.If not, exit the script
 COMPONENT="mongodb"
 LOGFILE="/tmp/${COMPONENT}.log"
 MONGO_REPO="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mongo.repo"

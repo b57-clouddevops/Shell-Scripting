@@ -1,26 +1,14 @@
 #!/bin/bash
 
-# Check whether you're running this script with sudo or a root user or not.If not, exit the script
-ID=$(id -u)
-if [ $ID -ne 0 ] ; then 
-    echo -e "\e[31m This script is expected to run with sudo or as a root user \e[0m   \n\t Ex:  bash scriptName compName"
-    exit 1
-fi 
-
 COMPONENT="catalogue"
 LOGFILE="/tmp/$COMPONENT.log"
 APPUSER="roboshop"
 APPUSER_DIR="/home/roboshop/${COMPONENT}"
 
-stat() {
-    if [ $1 -eq 0 ]; then 
-        echo -e "\e[32m Success \e[0m"
-    else 
-        echo -e "\e[31m Failure \e[0m"
-    fi 
-}
+source components/common.sh         # source will keep all the functions local to the current script that declared in other file.
 
 echo -e "\e[35m **************** ______ $COMPONENT Configuration Is Started ______  **************** \e[0m"
+
 echo -n "Disabling  Default NodeJS Version :"
 dnf module disable nodejs -y      &>>  $LOGFILE
 stat $? 
@@ -41,7 +29,6 @@ if [ $? -ne 0 ]; then
 else 
     echo -e "\e[35m SKIPPING \e[0m"
 fi 
-
 
 echo -n "Downloading the $COMPONENT Component: "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"

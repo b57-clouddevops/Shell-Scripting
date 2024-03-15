@@ -3,7 +3,7 @@
 COMPONENT="mysql"
 LOGFILE="/tmp/${COMPONENT}.log"
 MYSQL_REPO="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mysql.repo"
-SCHEMA_URL="https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip"
+SCHEMA_URL="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/shipping.sql"
 
 source components/common.sh         # source will keep all the functions local to the current script that declared in other file.
 
@@ -38,15 +38,10 @@ if [ $? -ne 0 ] ; then
 fi 
 
 echo -n "Downloading $COMPONENT Schema File : "
-curl -s -L -o /home/centos/mysql.zip $SCHEMA_URL  &>>  $LOGFILE
+cd /tmp/
+wget $SCHEMA_URL  &>>  $LOGFILE
 stat $? 
 
-echo -n "Extract $COMPONENT Schema File : "
-ls -ltr /home/centos/mysql.zip
-unzip -o /home/centos/mysql.zip
-ls -ltr /home/centos/
-stat $?
-
 echo -n "Injecting the schema :"
-cd /home/centos/${COMPONENT}-main/
-mysql -u root -pRoboShop@1 <shipping.sql
+mysql -u root -pRoboShop@1 </tmp/shipping.sql &>>  $LOGFILE 
+stat $?

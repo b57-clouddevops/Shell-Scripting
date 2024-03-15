@@ -31,10 +31,10 @@ echo -n "Fetching $COMPONENT root passowrd: "
 DEFAULT_ROOT_PASS=$(grep "temporary password" /var/log/mysqld.log | awk -F " " '{print $NF}')
 stat $? 
 
-echo "show databases;" | mysql -uroot -p${MYSQL_PWD} &>>  $LOGFILE
+echo "show databases;" | mysql -uroot -pRoboShop@1 &>>  $LOGFILE
 if [ $? -ne 0 ] ; then 
     echo -n "Changing default root password :"
-    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY ${MYSQL_PWD}" | mysql --connect-expired-password -uroot -p$DEFAULT_ROOT_PASS
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'" | mysql --connect-expired-password -uroot -pRoboShop@1
     stat $? 
 fi 
 
@@ -43,7 +43,7 @@ if [ $? -eq 0 ] ; then
     echo -n "Uninstalling plugins:"
     echo "uninstall plugin validate_password;" | mysql -uroot -p${MYSQL_PWD}
     stat $? 
-    echo "show databases;" | mysql -uroot -p${MYSQL_PWD} &>>  $LOGFILE
+    echo "show databases;" | mysql -uroot -pRoboShop@1 &>>  $LOGFILE
 fi 
 
 echo -n "Downloading $COMPONENT Schema File : "
@@ -52,5 +52,5 @@ wget $SCHEMA_URL  &>>  $LOGFILE
 stat $? 
 
 echo -n "Injecting the schema :"
-mysql -u root -p${MYSQL_PWD} </tmp/shipping.sql &>>  $LOGFILE 
+mysql -u root -pRoboShop@1 </tmp/shipping.sql &>>  $LOGFILE 
 stat $?

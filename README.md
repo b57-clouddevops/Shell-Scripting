@@ -41,3 +41,8 @@ Before you make a first push, ensure you generate the token,
 
 We have   NodeJS, Python , Java, AngularJS based components . . .
            (3)     (1)      (1)    (1)
+
+
+
+# Backlog 
+* MySQL Root Password Should Not Be In The Code

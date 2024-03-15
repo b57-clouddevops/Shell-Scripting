@@ -30,6 +30,8 @@ echo -n "Fetching $COMPONENT root passowrd: "
 DEFAULT_ROOT_PASS=$(grep "temporary password" /var/log/mysqld.log | awk -F " " '{print $NF}')
 stat $? 
 
+echo "DB Password To Configure is $2"
+
 echo "show databases;" | mysql -uroot -p$2 &>>  $LOGFILE
 if [ $? -ne 0 ] ; then 
     echo -n "Changing default root password :"

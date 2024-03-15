@@ -42,8 +42,8 @@ curl -s -L -o /tmp/mysql.zip $SCHEMA_URL  &>>  $LOGFILE
 stat $? 
 
 echo -n "Extracting $COMPONENT Schema File : "
+unzip -o /tmp/mysql.zip
 ls -ltr /tmp/
-unzip -o /tmp/mysql.zip  &>> $LOGFILE
 stat $?
 
 echo -n "Injecting the schema :"

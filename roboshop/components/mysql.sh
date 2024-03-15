@@ -4,7 +4,7 @@ COMPONENT="mysql"
 LOGFILE="/tmp/${COMPONENT}.log"
 MYSQL_REPO="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mysql.repo"
 SCHEMA_URL="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/shipping.sql"
-MYSQL_PWD="${2}"
+MYSQL_PWD=${2}
 
 source components/common.sh         # source will keep all the functions local to the current script that declared in other file.
 

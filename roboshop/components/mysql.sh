@@ -3,7 +3,7 @@
 COMPONENT="mysql"
 LOGFILE="/tmp/${COMPONENT}.log"
 MYSQL_REPO="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mysql.repo"
-SCHEMA_URL="https://github.com/stans-robot-project/mongodb/archive/main.zip"
+SCHEMA_URL="https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip"
 
 source components/common.sh         # source will keep all the functions local to the current script that declared in other file.
 
@@ -26,7 +26,7 @@ systemctl enable mysqld    &>>  $LOGFILE
 systemctl start mysqld     &>>  $LOGFILE
 stat $? 
 
-echo "Fetching $COMPONENT root passowrd: "
+echo -n "Fetching $COMPONENT root passowrd: "
 DEFAULT_ROOT_PASS=$(grep "temporary password" /var/log/mysqld.log | awk -F " " '{print $NF}')
 stat $? 
 
@@ -37,3 +37,11 @@ if [ $? -ne 0 ] ; then
     stat $? 
 fi 
 
+echo -n "Downloading & Extracting $COMPONENT Schema File : "
+curl -s -L -o /tmp/mysql.zip $SCHEMA_URL  &>>  $LOGFILE
+unzip -o /tmp/mysql.zip  &>>  $LOGFILE
+stat $?
+
+echo -n "Injecting the schema :"
+cd /tmp/${COMPONENT}-main/
+mysql -u root -pRoboShop@1 <shipping.sql

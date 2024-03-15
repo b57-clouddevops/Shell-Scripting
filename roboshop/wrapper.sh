@@ -8,4 +8,4 @@ if [ -z "$mysql_root_password" ]; then
 fi
 
 echo "PPP printing $mysql_root_password PPP"
-bash -x components/$1.sh
+bash components/$1.sh

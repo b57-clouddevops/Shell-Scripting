@@ -43,7 +43,7 @@ stat $?
 
 echo -n "Extracting $COMPONENT Schema File : "
 ls -ltr /tmp/
-unzip -o /tmp/${COMPONENT}.zip  &>> $LOGFILE
+unzip -o /tmp/mysql.zip  &>> $LOGFILE
 stat $?
 
 echo -n "Injecting the schema :"

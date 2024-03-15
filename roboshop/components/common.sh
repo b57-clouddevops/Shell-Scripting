@@ -108,6 +108,10 @@ MAVEN() {
     echo -n "Generating Artifacts :" 
     cd ${APPUSER_DIR}
     mvn clean package &>>  $LOGFILE
+    ls -ltr ${APPUSER_DIR}
+    stat $?
+
+    echo "Configuring artifact :"
     mv ${APPUSER_DIR}/target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
     stat $? 
 

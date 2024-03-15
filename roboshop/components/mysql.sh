@@ -41,7 +41,8 @@ echo -n "Downloading $COMPONENT Schema File : "
 curl -s -L -o /tmp/mysql.zip $SCHEMA_URL  &>>  $LOGFILE
 stat $? 
 
-echo -n "Extracting $COMPONENT Schema File : "
+echo -n "Extract $COMPONENT Schema File : "
+ls -ltr /tmp/mysql.zip
 unzip -o /tmp/mysql.zip
 ls -ltr /tmp/
 stat $?

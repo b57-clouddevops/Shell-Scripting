@@ -1,5 +1,7 @@
 #!/bin/bash 
 
+set -e 
+
 COMPONENT=mysql
 
 source components/common.sh

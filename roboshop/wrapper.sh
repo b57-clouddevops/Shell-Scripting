@@ -8,5 +8,4 @@ if [ "$1" = "mysql" ]; then
     fi
 fi 
 
-echo "PPP printing $mysql_root_password PPP"
 bash components/$1.sh

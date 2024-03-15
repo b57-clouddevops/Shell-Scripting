@@ -9,22 +9,22 @@ echo "Pringing PSWD $mysql_root_password"
 
 echo -e "\e[35m Configuring ${COMPONENT} ......! \e[0m \n"
 
-# echo "Disabling $COMPONENT repo :"
-# dnf module disable mysql -y     &>>  $LOGFILE
-# stat $? 
+echo "Disabling $COMPONENT repo :"
+dnf module disable mysql -y     &>>  $LOGFILE
+stat $? 
 
-# echo -n "Configuring ${COMPONENT} repo :"
-# curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo
-# stat $?
+echo -n "Configuring ${COMPONENT} repo :"
+curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo
+stat $?
 
-# echo -n "Installing ${COMPONENT}  :"
-# dnf install mysql-community-server -y     &>>  ${LOGFILE}
-# stat $?
+echo -n "Installing ${COMPONENT}  :"
+dnf install mysql-community-server -y     &>>  ${LOGFILE}
+stat $?
 
-# echo -n "Starting ${COMPONENT}:" 
-# systemctl enable mysqld   &>>  ${LOGFILE}
-# systemctl start mysqld    &>>  ${LOGFILE}
-# stat $?
+echo -n "Starting ${COMPONENT}:" 
+systemctl enable mysqld   &>>  ${LOGFILE}
+systemctl start mysqld    &>>  ${LOGFILE}
+stat $?
 
 echo -n "Extracting the default mysql root password :"
 export DEFAULT_ROOT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk -F " " '{print $NF}')
@@ -32,7 +32,6 @@ stat $?
 
 # This should happen only once and that too for the first time, when it runs for the second time, jobs fails.
 # We need to ensure that this runs only once.
-
 echo "show databases;" | mysql -uroot -pRoboShop@1 &>>  ${LOGFILE}
 if [ $? -ne 0 ]; then 
     echo -n "Performing default password reset of root account:"

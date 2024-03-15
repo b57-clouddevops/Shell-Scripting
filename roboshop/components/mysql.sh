@@ -1,11 +1,8 @@
 #!/bin/bash 
 
-# set -e 
-
 COMPONENT=mysql
 
 source components/common.sh
-echo "Pringing PSWD $mysql_root_password"
 
 echo -e "\e[35m Configuring ${COMPONENT} ......! \e[0m \n"
 

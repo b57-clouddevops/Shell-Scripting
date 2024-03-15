@@ -4,8 +4,7 @@ COMPONENT=rabbitmq
 
 source components/common.sh 
 
-echo -e "***** \e[35m Configuring ${COMPONENT} \e[0m ******"
-
+echo -e "\e[35m Configuring ${COMPONENT} ......! \e[0m \n"
 
 echo -n "Configuring $COMPONENT repo :"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash    &>> $LOGFILE
@@ -33,4 +32,4 @@ rabbitmqctl set_user_tags roboshop administrator       &>> $LOGFILE
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"     &>> $LOGFILE
 stat $? 
 
-echo -e "***** \e[35m $COMPONENT Configuration Is Complted \e[0m ******"
+echo -e "\e[35m Configuring ${COMPONENT} IS Completed \e[0m \n"

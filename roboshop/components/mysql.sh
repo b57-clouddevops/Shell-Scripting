@@ -37,6 +37,14 @@ if [ $? -ne 0 ] ; then
     stat $? 
 fi 
 
+echo "show plugins;" | mysql -uroot -pRoboShop@1 | grep validate_password &>>  $LOGFILE
+if [ $? -eq 0 ] ; then 
+    echo -n "Uninstalling plugins:"
+    echo "uninstall plugin validate_password;" | mysql -uroot -pRoboShop@1
+    stat $? 
+    echo "show databases;" | mysql -uroot -pRoboShop@1 &>>  $LOGFILE
+fi 
+
 echo -n "Downloading $COMPONENT Schema File : "
 cd /tmp/
 wget $SCHEMA_URL  &>>  $LOGFILE

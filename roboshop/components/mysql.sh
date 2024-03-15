@@ -38,15 +38,15 @@ if [ $? -ne 0 ] ; then
 fi 
 
 echo -n "Downloading $COMPONENT Schema File : "
-curl -s -L -o /tmp/mysql.zip $SCHEMA_URL  &>>  $LOGFILE
+curl -s -L -o /home/centos/mysql.zip $SCHEMA_URL  &>>  $LOGFILE
 stat $? 
 
 echo -n "Extract $COMPONENT Schema File : "
-ls -ltr /tmp/mysql.zip
-unzip -o /tmp/mysql.zip
-ls -ltr /tmp/
+ls -ltr /home/centos/mysql.zip
+unzip -o /home/centos/mysql.zip
+ls -ltr /home/centos/
 stat $?
 
 echo -n "Injecting the schema :"
-cd /tmp/${COMPONENT}-main/
+cd /home/centos/${COMPONENT}-main/
 mysql -u root -pRoboShop@1 <shipping.sql

@@ -1,8 +1,11 @@
 #!/bin/bash 
 
 COMPONENT=mysql
+PSWD=$2
 
 source components/common.sh
+
+echo "Pringing PSWD $PSWD"
 
 echo -e "\e[35m Configuring ${COMPONENT} ......! \e[0m \n"
 

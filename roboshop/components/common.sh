@@ -97,7 +97,7 @@ NODEJS() {
 
 
 MAVEN() {
-    echo -e "Installing maven :"
+    echo -n "Installing maven :"
     dnf install maven -y   &>>  $LOGFILE
     stat $? 
     

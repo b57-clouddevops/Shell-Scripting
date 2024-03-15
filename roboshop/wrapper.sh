@@ -7,4 +7,5 @@ if [ -z "$mysql_root_password" ]; then
   exit 8
 fi
 
+echo printing $mysql_root_password
 bash components/$1.sh

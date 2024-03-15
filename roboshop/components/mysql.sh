@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 COMPONENT=mysql
-# PSWD=$2
+mysql_root_password="RoboShop@1"
 
 source components/common.sh
 
@@ -33,17 +33,17 @@ stat $?
 # This should happen only once and that too for the first time, when it runs for the second time, jobs fails.
 # We need to ensure that this runs only once.
 
-echo "show databases;" | mysql -uroot -pRoboShop@1 &>>  ${LOGFILE}
+echo "show databases;" | mysql -uroot -p${mysql_root_password} &>>  ${LOGFILE}
 if [ $? -ne 0 ]; then 
     echo -n "Performing default password reset of root account:"
-    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'" | mysql  --connect-expired-password -uroot -p$DEFAULT_ROOT_PASSWORD &>>  ${LOGFILE}
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY ${mysql_root_password}" | mysql  --connect-expired-password -uroot -p$DEFAULT_ROOT_PASSWORD &>>  ${LOGFILE}
     stat $?
 fi 
 
-echo "show plugins;" | mysql -uroot -pRoboShop@1 | grep validate_password  &>>  ${LOGFILE}
+echo "show plugins;" | mysql -uroot -p${mysql_root_password} | grep validate_password  &>>  ${LOGFILE}
 if [ $? -eq 0 ]; then 
     echo -n "Uninstalling Password-validate plugin :"
-    echo "uninstall plugin validate_password" | mysql -uroot -pRoboShop@1 &>>  ${LOGFILE}
+    echo "uninstall plugin validate_password" | mysql -uroot -p${mysql_root_password} &>>  ${LOGFILE}
     stat $?
 fi 
 
@@ -59,7 +59,7 @@ stat $?
 
 echo -n "Injecting the schema:"
 cd ${COMPONENT}-main 
-mysql -u root -pRoboShop@1 <shipping.sql     &>>  ${LOGFILE} 
+mysql -u root -p${mysql_root_password} <shipping.sql     &>>  ${LOGFILE} 
 stat $? 
 
 

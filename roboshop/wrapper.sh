@@ -7,5 +7,5 @@ if [ -z "$mysql_root_password" ]; then
     exit 8
 fi
 
-echo printing $mysql_root_password
+echo "PPP printing $mysql_root_password PPP"
 bash -x components/$1.sh

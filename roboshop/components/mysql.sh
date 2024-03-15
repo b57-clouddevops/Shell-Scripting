@@ -3,6 +3,7 @@
 COMPONENT="mysql"
 MYSQL_REPO="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mysql.repo"
 SCHEMA_URL="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/shipping.sql"
+DBPWD="${1}
 
 source components/common.sh         # source will keep all the functions local to the current script that declared in other file.
 
@@ -29,21 +30,20 @@ echo -n "Fetching $COMPONENT root passowrd: "
 DEFAULT_ROOT_PASS=$(grep "temporary password" /var/log/mysqld.log | awk -F " " '{print $NF}')
 stat $? 
 
-echo "DB Password To Configure is ${mysql_root_password}"
+echo "DB Password To Configure is ${DBPWD}"
 
-echo "show databases;" | mysql -uroot -p${mysql_root_password} &>>  $LOGFILE
+echo "show databases;" | mysql -uroot -p${DBPWD} &>>  $LOGFILE
 if [ $? -ne 0 ] ; then 
     echo -n "Changing default root password :"
-    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY $2" | mysql --connect-expired-password -uroot -pRoboShop@1
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY $1" | mysql --connect-expired-password -uroot -p${DBPWD}
     stat $? 
 fi 
 
 echo "show plugins;" | mysql -uroot -p${mysql_root_password}| grep validate_password &>>  $LOGFILE
 if [ $? -eq 0 ] ; then 
     echo -n "Uninstalling plugins:"
-    echo "uninstall plugin validate_password;" | mysql -uroot -p${MYSQL_PWD}
+    echo "uninstall plugin validate_password;" | mysql -uroot -p${DBPWD}
     stat $? 
-    echo "show databases;" | mysql -uroot -p${mysql_root_password} &>>  $LOGFILE
 fi 
 
 echo -n "Downloading $COMPONENT Schema File : "

@@ -34,7 +34,7 @@ stat $?
 echo "show databases;" | mysql -uroot -p${mysql_root_password} &>>  ${LOGFILE}
 if [ $? -ne 0 ]; then 
     echo -n "Performing default password reset of root account:"
-    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY ${mysql_root_password}" | mysql  --connect-expired-password -uroot -p$DEFAULT_ROOT_PASSWORD &>>  ${LOGFILE}
+    echo 'ALTER USER "root"@"localhost" IDENTIFIED BY "${mysql_root_password}"' | mysql  --connect-expired-password -uroot -p$DEFAULT_ROOT_PASSWORD &>>  ${LOGFILE}
     stat $?
 fi 
 

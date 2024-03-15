@@ -2,10 +2,10 @@
 
 mysql_root_password=$2
 
-if [ "$1" -eq "mysql" ]
+if [ $1 -eq mysql ]
     if [ -z "$mysql_root_password" ]; then
-    echo "mysql_root_password is missing"
-    exit 8
+        echo "mysql_root_password is missing"
+        exit 8
     fi
 fi
 

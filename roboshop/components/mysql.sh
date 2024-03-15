@@ -37,8 +37,12 @@ if [ $? -ne 0 ] ; then
     stat $? 
 fi 
 
-echo -n "Downloading & Extracting $COMPONENT Schema File : "
+echo -n "Downloading $COMPONENT Schema File : "
 curl -s -L -o /tmp/mysql.zip $SCHEMA_URL  &>>  $LOGFILE
+stat $? 
+
+echo -n "Extracting $COMPONENT Schema File : "
+ls -ltr /tmp/
 unzip -o /tmp/${COMPONENT}.zip  &>> $LOGFILE
 stat $?
 

@@ -30,10 +30,10 @@ echo -n "Fetching $COMPONENT root passowrd: "
 DEFAULT_ROOT_PASS=$(grep "temporary password" /var/log/mysqld.log | awk -F " " '{print $NF}')
 stat $? 
 
-echo "show databases;" | mysql -uroot -pRoboShop@1 &>>  $LOGFILE
+echo "show databases;" | mysql -uroot -p$2 &>>  $LOGFILE
 if [ $? -ne 0 ] ; then 
     echo -n "Changing default root password :"
-    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'" | mysql --connect-expired-password -uroot -pRoboShop@1
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY $2" | mysql --connect-expired-password -uroot -pRoboShop@1
     stat $? 
 fi 
 

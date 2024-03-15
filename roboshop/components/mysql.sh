@@ -51,6 +51,5 @@ cd /tmp/
 wget $SCHEMA_URL  &>>  $LOGFILE
 stat $? 
 
-echo -n "Injecting the schema :"
 mysql -u root -pRoboShop@1 </tmp/shipping.sql &>>  $LOGFILE 
 stat $?

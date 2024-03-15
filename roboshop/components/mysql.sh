@@ -4,7 +4,7 @@ COMPONENT="mysql"
 LOGFILE="/tmp/${COMPONENT}.log"
 MYSQL_REPO="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mysql.repo"
 SCHEMA_URL="https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/shipping.sql"
-DBPWD="${2}"
+mysql_root_password=$2
 
 source components/common.sh         # source will keep all the functions local to the current script that declared in other file.
 
@@ -31,9 +31,9 @@ echo -n "Fetching $COMPONENT root passowrd: "
 DEFAULT_ROOT_PASS=$(grep "temporary password" /var/log/mysqld.log | awk -F " " '{print $NF}')
 stat $? 
 
-echo "DB Password To Configure is ${DBWPD}"
+echo "DB Password To Configure is ${mysql_root_password}"
 
-echo "show databases;" | mysql -uroot -p${DBPWD} &>>  $LOGFILE
+echo "show databases;" | mysql -uroot -p${mysql_root_password} &>>  $LOGFILE
 if [ $? -ne 0 ] ; then 
     echo -n "Changing default root password :"
     echo "ALTER USER 'root'@'localhost' IDENTIFIED BY $2" | mysql --connect-expired-password -uroot -pRoboShop@1

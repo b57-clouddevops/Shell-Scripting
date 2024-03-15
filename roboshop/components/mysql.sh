@@ -33,10 +33,10 @@ stat $?
 # This should happen only once and that too for the first time, when it runs for the second time, jobs fails.
 # We need to ensure that this runs only once.
 
-echo "show databases;" | mysql -uroot -p${mysql_root_password} &>>  ${LOGFILE}
+echo "show databases;" | mysql -uroot -pRoboShop@1 &>>  ${LOGFILE}
 if [ $? -ne 0 ]; then 
     echo -n "Performing default password reset of root account:"
-    echo 'ALTER USER "root"@"localhost" IDENTIFIED BY "${mysql_root_password}"' | mysql  --connect-expired-password -uroot -p$DEFAULT_ROOT_PASSWORD &>>  ${LOGFILE}
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'" | mysql  --connect-expired-password -uroot -p$DEFAULT_ROOT_PASSWORD &>>  ${LOGFILE}
     stat $?
 fi 
 

@@ -27,7 +27,7 @@ echo -e "\e[35m Configuring ${COMPONENT} ......! \e[0m \n"
 # stat $?
 
 echo -n "Extracting the default mysql root password :"
-DEFAULT_ROOT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk -F " " '{print $NF}')
+export DEFAULT_ROOT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk -F " " '{print $NF}')
 stat $? 
 
 echo $DEFAULT_ROOT_PASSWORD

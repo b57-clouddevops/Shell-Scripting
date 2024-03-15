@@ -66,6 +66,3 @@ echo -n "Injecting the schema:"
 cd ${COMPONENT}-main 
 mysql -u root -p${mysql_root_password} <shipping.sql     &>>  ${LOGFILE} 
 stat $? 
-
-
-# echo -e "\e[35m ${COMPONENT} Installation Is Completed \e[0m \n"

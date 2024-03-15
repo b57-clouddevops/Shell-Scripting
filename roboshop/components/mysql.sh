@@ -1,7 +1,6 @@
 #!/bin/bash 
 
 COMPONENT=mysql
-# mysql_root_password="RoboShop@1"
 
 mysql_root_password=$2
 if [ -z "${mysql_root_password}" ]; then
@@ -65,4 +64,4 @@ stat $?
 echo -n "Injecting the schema:"
 cd ${COMPONENT}-main 
 mysql -u root -p${mysql_root_password} <shipping.sql     &>>  ${LOGFILE} 
-stat $? 
+stat $?

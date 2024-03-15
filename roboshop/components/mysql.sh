@@ -46,7 +46,7 @@ if [ $? -eq 0 ] ; then
     stat $? 
 fi 
 
-echo -n "Downloading $COMPONENT Schema File : "
+echo -n "Downloading ${COMPONENT} Schema File "
 cd /tmp/
 wget $SCHEMA_URL  &>>  $LOGFILE
 stat $? 

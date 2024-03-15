@@ -1,10 +1,15 @@
 #!/bin/bash 
 
 COMPONENT=mysql
-mysql_root_password="RoboShop@1"
+# mysql_root_password="RoboShop@1"
+
+mysql_root_password=$2
+if [ -z "${mysql_root_password}" ]; then
+  echo -e "\e[34mInput Password Missing
+  exit 1
+fi
 
 source components/common.sh
-
 echo "Pringing PSWD $mysql_root_password"
 
 echo -e "\e[35m Configuring ${COMPONENT} ......! \e[0m \n"

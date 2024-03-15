@@ -2,12 +2,6 @@
 
 COMPONENT=mysql
 
-mysql_root_password=$2
-if [ -z "${mysql_root_password}" ]; then
-  echo -e "\e[34mInput Password Missing
-  exit 1
-fi
-
 source components/common.sh
 echo "Pringing PSWD $mysql_root_password"
 
@@ -51,18 +45,16 @@ if [ $? -eq 0 ]; then
     stat $?
 fi 
 
+echo -n "Downloading the $COMPONENT schema:"
+curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip"
+stat $? 
 
+echo -n "Extracting the $COMPONENT Schema:"
+cd /tmp  
+unzip -o /tmp/${COMPONENT}.zip   &>> $LOGFILE
+stat $? 
 
-# echo -n "Downloading the $COMPONENT schema:"
-# curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip"
-# stat $? 
-
-# echo -n "Extracting the $COMPONENT Schema:"
-# cd /tmp  
-# unzip -o /tmp/${COMPONENT}.zip   &>> $LOGFILE
-# stat $? 
-
-# echo -n "Injecting the schema "
-# cd ${COMPONENT}-main 
-# mysql -u root -p${mysql_root_password} <shipping.sql     &>>  ${LOGFILE} 
-# stat $?
+echo -n "Injecting the schema "
+cd ${COMPONENT}-main 
+mysql -u root -p${mysql_root_password} <shipping.sql     &>>  ${LOGFILE} 
+stat $?

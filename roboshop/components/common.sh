@@ -107,7 +107,7 @@ MAVEN() {
     DOWNLOAD_AND_EXTRACT
      
     echo -n "Generating Artifacts :"
-    cd /home/${APPUSER}/{COMPONENT}/
+    cd /home/${APPUSER}/${COMPONENT}/
     mvn clean package  &>> $LOGFILE
     mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
     stat $?

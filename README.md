@@ -42,9 +42,22 @@ Before you make a first push, ensure you generate the token,
 We have   NodeJS, Python , Java, AngularJS based components . . .
            (3)     (1)      (1)    (1)
 
-
-
-# Backlog 
-* MySQL Root Password Should Not Be In The Code
-
 # Next Week Starting From Monday/Sunday_Night, we will start with ANSIBLE ----> Jenkins / CICD ----> Terraform ----> Observability
+
+
+# What's next for today ?
+    * I would like to bash to created EC2 Instances & Route53 Records on AWS 
+
+
+# In how many , can you connect or authenticate to aws ???
+
+    * GUI / Console   ( Username/Userpassowrd)
+    * CLI / Commands  ( You would be using tokens for authentication) : But in reality, TOEKN Generation is a pretty bad idea.
+
+    Token Generation : Access / Secret Key
+
+
+IAM : Identity and access management 
+    * We create User Accounts         ( Humans )
+    * Group Accounts                  ( Humans )
+    * IAM Roles                       ( Humans )

@@ -112,10 +112,6 @@ MAVEN() {
     mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
     stat $?
 
-    echo "Configuring artifact :"
-    mv ${APPUSER_DIR}/target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
-    stat $? 
-
     CONFIG_SVC
 
 }

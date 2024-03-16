@@ -46,12 +46,12 @@ DOWNLOAD_AND_EXTRACT() {
     echo -n "Extracting $COMPONENT :"
     cd /home/roboshop
     unzip -o /tmp/${COMPONENT}.zip  &>>  $LOGFILE
+    mv /home/${APPUSER}/${COMPONENT}-main /home/${APPUSER}/${COMPONENT}
     stat $? 
 }
 
 CONFIG_SVC() {
     echo -n "Configuring Permissions :"
-    mv /home/roboshop/${COMPONENT}-main ${APPUSER_DIR} &>>  $LOGFILE
     chown -R ${APPUSER}:${APPUSER} ${APPUSER_DIR}      &>>  $LOGFILE
     stat $? 
 
@@ -108,7 +108,6 @@ MAVEN() {
      
     echo -n "Generating Artifacts :"
     cd /home/${APPUSER}/{COMPONENT}/
-    ls -ltr
     mvn clean package  &>> $LOGFILE
     mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
     stat $?

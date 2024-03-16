@@ -1,3 +1,5 @@
+            "PrivateIpAddress": "172.31.4.40",
+cat ec2.json | jq .Instancesp[].PrivateIpAddress
 {
     "Groups": [],
     "Instances": [

@@ -46,3 +46,5 @@ We have   NodeJS, Python , Java, AngularJS based components . . .
 
 # Backlog 
 * MySQL Root Password Should Not Be In The Code
+
+# Next Week Starting From Monday/Sunday_Night, we will start with ANSIBLE ----> Jenkins / CICD ----> Terraform ----> Observability

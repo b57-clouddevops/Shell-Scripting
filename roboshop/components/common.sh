@@ -5,7 +5,7 @@
 
 LOGFILE="/tmp/$COMPONENT.log"
 APPUSER="roboshop"
-APPUSER_DIR="/home/roboshop/${COMPONENT}"
+APPUSER_DIR="/home/${APPUSER}/${COMPONENT}"
 
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then 
@@ -34,12 +34,13 @@ CREATE_USER() {
 }
 
 DOWNLOAD_AND_EXTRACT() {
-    echo -n "Downloading the $COMPONENT Component: "
-    curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
-    stat $? 
 
     echo -n "Performing $COMPONENT Cleanup :"
-    rm -rf ${APPUSER_DIR}  &>>  $LOGFILE
+    rm -rf ${APPUSER_DIR}  || true  &>>  $LOGFILE
+    stat $? 
+
+    echo -n "Downloading the $COMPONENT Component: "
+    curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
     stat $? 
 
     echo -n "Extracting $COMPONENT :"
@@ -105,10 +106,11 @@ MAVEN() {
 
     DOWNLOAD_AND_EXTRACT
      
-    echo -n "Generating Artifacts :" 
-    cd ${APPUSER_DIR}
-    mvn clean package &>>  $LOGFILE
-    ls -ltr ${APPUSER_DIR}
+    echo -n "Generating Artifacts :"
+    cd $APPUSER_HOME 
+    ls -ltr
+    mvn clean package  &>> $LOGFILE
+    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
     stat $?
 
     echo "Configuring artifact :"

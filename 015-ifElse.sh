@@ -19,3 +19,5 @@ else
     echo -e "\e[35m Valid options are start stop restart only \e[0m"
     exit 3
 fi
+
+ 

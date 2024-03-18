@@ -15,12 +15,22 @@ if [ -z $1 ] ; then
     exit 1
 fi 
 
-PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t3.micro --security-group-ids $SGID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq .Instances[].PrivateIpAddress |sed -e 's/"//g')
-echo "___ $COLOR $1 Server Created and here is the IP ADDRESS $PRIVATE_IP $NOCOLOR ___"
+create_ec2() {
+    PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t3.micro --security-group-ids $SGID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq .Instances[].PrivateIpAddress |sed -e 's/"//g')
+    echo "___ $COLOR $1 Server Created and here is the IP ADDRESS $PRIVATE_IP $NOCOLOR ___"
 
-echo "Creating r53 json file with component name and ip address:"
-sed -e "s/IPADDRESS/${PRIVATE_IP}/g" -e "s/COMPONENT/${COMPONENT}/g" route53.json  > /tmp/dns.json 
+    echo "Creating r53 json file with component name and ip address:"
+    sed -e "s/IPADDRESS/${PRIVATE_IP}/g" -e "s/COMPONENT/${COMPONENT}/g" route53.json  > /tmp/dns.json 
 
-echo -e "___ $COLOR Creating DNS Record for $COMPONENT ___ $NOCOLOR \n\n"
-aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONE_ID --change-batch file:///tmp/dns.json 
+    echo -e "___ $COLOR Creating DNS Record for $COMPONENT ___ $NOCOLOR \n\n"
+    aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONE_ID --change-batch file:///tmp/dns.json 
+}
 
+# if component name from user is all, then I would like create & update all 10 servers and it's DNS Records 
+if [ "$1" == "all" ]; then 
+    for comp in frontend mongodb catalogue user redis cart mysql shipping rabbimq payment; do 
+        COMPONENT=$comp
+        create_ec2
+    done 
+create_ec2
+fi 

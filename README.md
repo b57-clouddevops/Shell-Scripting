@@ -89,3 +89,19 @@ Vertical Scaling -----> Adding resources to the same machine again and again on 
 
     * Using AWS CLI Commands wrappeed in a script!!!!
 
+
+
+Enronments : 
+    - PROD
+    - NonProd /State 
+    - QA 
+    - Dev
+
+Deployment Flow :
+
+    Dev ---> QA ---> NonProd ---> Prod
+       
+       Dev ------>  Prod
+
+       cart-dev.roboshop.internal
+       user-prod.roboshop.internal

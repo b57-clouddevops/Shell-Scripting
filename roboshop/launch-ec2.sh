@@ -7,7 +7,7 @@ SGID="sg-03b4d0f3339fdc89c"               # Create your own Security Group that 
 HOSTEDZONE_ID="Z08185973US3IG8LL97B8"     # User your private zone id
 COMPONENT=$1
 ENV=$2
-COLOR="\e[37m"
+COLOR="\e[35m"
 NOCOLOR="\e[0m"
 
 if [ -z $1 ] || [ -z $2 ] ; then

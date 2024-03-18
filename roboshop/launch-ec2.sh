@@ -17,13 +17,13 @@ if [ -z $1 ] || [ -z $2 ] ; then
 fi 
 
 create_ec2() {
-    PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t3.micro --security-group-ids $SGID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$COMPONENT}]" | jq .Instances[].PrivateIpAddress |sed -e 's/"//g')
-    echo -e "___ $COLOR $1 Server Created and here is the IP ADDRESS $PRIVATE_IP $NOCOLOR ___"
+    PRIVATE_IP=$(aws ec2 run-instances --image-id $AMI_ID --instance-type t3.micro --security-group-ids $SGID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}-${ENV}}]" | jq .Instances[].PrivateIpAddress |sed -e 's/"//g')
+    echo -e "___ $COLOR $1-$2 Server Created and here is the IP ADDRESS $PRIVATE_IP $NOCOLOR ___"
 
     echo "Creating r53 json file with component name and ip address:"
-    sed -e "s/IPADDRESS/${PRIVATE_IP}/g" -e "s/COMPONENT/${COMPONENT}/g" route53.json  > /tmp/dns.json 
+    sed -e "s/IPADDRESS/${PRIVATE_IP}/g" -e "s/COMPONENT/${COMPONENT}-${ENV}/g" route53.json  > /tmp/dns.json 
 
-    echo -e "___ $COLOR Creating DNS Record for $COMPONENT ___ $NOCOLOR \n\n"
+    echo -e "___ $COLOR Creating DNS Record for $COMPONENT-${ENV} ___ $NOCOLOR \n\n"
     aws route53 change-resource-record-sets --hosted-zone-id $HOSTEDZONE_ID --change-batch file:///tmp/dns.json 
 }
 

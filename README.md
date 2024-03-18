@@ -105,3 +105,8 @@ Deployment Flow :
 
        cart-dev.roboshop.internal
        user-prod.roboshop.internal
+
+
+QUOTA's in AWS : It defined what can be maximum number of resources that you can use account.
+
+If you see any resource contraints related to quota's, you can reach AWS or we can also increate the quota

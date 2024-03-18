@@ -31,6 +31,7 @@ if [ "$1" == "all" ]; then
     for comp in frontend mongodb catalogue user redis cart mysql shipping rabbimq payment; do 
         COMPONENT=$comp
         create_ec2
-    done 
-create_ec2
+    done
+else  
+    create_ec2
 fi 
